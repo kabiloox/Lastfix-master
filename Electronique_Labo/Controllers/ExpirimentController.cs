@@ -68,21 +68,26 @@ namespace Electronique_Labo
         }
         public ActionResult Edit(int? id)
         {
+           
             if (id == null)
             {
                 return HttpNotFound();
             }
-
-            var vm = new ViewModel()
+            var exp = db.Expiriments.Find(id);
+            if (exp == null)
             {
-                Niveaus = db.Niveaus.ToList(),
-                Filliers = db.Filliers.ToList(),
-                Secteurs = db.Secteurs.ToList(),
-                Outils = db.Outils.Where(s => s.ExpirimentId == id).ToList(),
-                Conseils = db.Conseils.Where(s => s.ExpirimentId == id).ToList(),
-                Imageses = db.Imageses.Where(s => s.ExpirimentId == id).ToList(),
-                Expiriment = db.Expiriments.Find(id)
-            };
+                return HttpNotFound();
+            }
+            var vm = new ViewModel();      
+            vm.Niveaus = db.Niveaus.ToList();
+            vm.Filliers = db.Filliers.ToList();
+            vm.Secteurs = db.Secteurs.ToList();
+            vm.Outils = db.Outils.Where(s => s.ExpirimentId == id).ToList();
+            vm.Conseils = db.Conseils.Where(s => s.ExpirimentId == id).ToList();
+            vm.Imageses = db.Imageses.Where(s => s.ExpirimentId == id).ToList();
+            vm.GoogleDriveFiles = db.GoogleDriveFiles.ToList();
+            vm.Expiriment = exp;
+            vm.Expiriment.SelectedArrayFilliere= exp.IdFilliere.Split(',').ToArray();
 
             return View(vm);
         }
@@ -98,6 +103,7 @@ namespace Electronique_Labo
                 EditImage.SaveAs(ImageExprirmentPath);
                 viewModel.Expiriment.Image = EditImage.FileName;
             }
+            viewModel.Expiriment.IdFilliere = string.Join(",", viewModel.Expiriment.SelectedArrayFilliere);
             db.Entry(viewModel.Expiriment).State = EntityState.Modified;
             db.SaveChanges();
             // Update Outils --------------------------------------------
@@ -128,6 +134,8 @@ namespace Electronique_Labo
                 db.SaveChanges();
             }
             OutilConseilImage.saveImage(UploadImage, UploadTitle, viewModel.Expiriment.Id);
+
+            //Update Google Drive
             return RedirectToAction("Index");
         }
     }

@@ -179,7 +179,7 @@ function RemoveImage(button) {
         return div;
     }
 
-    $('#AddGroupDrive').click(function () {
+    function AddDriveInput() {
         var x;
         var div = GetDynamicDrive("");
         var MyDriveContainer = document.querySelector("#FileContainner").innerHTML;
@@ -195,7 +195,7 @@ function RemoveImage(button) {
             }
         }
 
-    });
+    };
 
     function RemoveDrive(button) {
         $(button).parent().remove();
