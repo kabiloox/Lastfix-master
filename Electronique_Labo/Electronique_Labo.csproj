@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201803210213362_fixerror.Designer.cs">
       <DependentUpon>201803210213362_fixerror.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803211319581_Add-datetimeintablexp.cs" />
+    <Compile Include="Migrations\201803211319581_Add-datetimeintablexp.Designer.cs">
+      <DependentUpon>201803211319581_Add-datetimeintablexp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Conseil.cs" />
@@ -411,6 +415,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803210213362_fixerror.resx">
       <DependentUpon>201803210213362_fixerror.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803211319581_Add-datetimeintablexp.resx">
+      <DependentUpon>201803211319581_Add-datetimeintablexp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
