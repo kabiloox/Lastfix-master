@@ -394,6 +394,7 @@
     <Content Include="Views\Shared\_Loginmodal.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_RegistreModal.cshtml" />
+    <Content Include="Views\Expiriment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
