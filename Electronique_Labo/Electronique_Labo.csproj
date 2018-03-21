@@ -227,9 +227,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803210127366_initialm.cs" />
+    <Compile Include="Migrations\201803210127366_initialm.Designer.cs">
+      <DependentUpon>201803210127366_initialm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Conseil.cs" />
+    <Compile Include="Models\Expiriment.cs" />
+    <Compile Include="Models\Fillier.cs" />
+    <Compile Include="Models\GoogleDriveFile.cs" />
+    <Compile Include="Models\GoogleDriveFilesRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Images.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Niveau.cs" />
+    <Compile Include="Models\Outil.cs" />
+    <Compile Include="Models\OutilConseilImage.cs" />
+    <Compile Include="Models\profileimg.cs" />
+    <Compile Include="Models\Secteur.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -389,6 +406,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803210127366_initialm.resx">
+      <DependentUpon>201803210127366_initialm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
