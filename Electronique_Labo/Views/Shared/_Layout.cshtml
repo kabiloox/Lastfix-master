@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+    @if (Request.IsAuthenticated)
+    {
+
+    }
+    else
+    {
+        @Html.Partial("_Loginmodal")
+        @Html.Partial("_RegistreModal")
+
+
+    }
+
+
+    @Html.Partial("_Navbar")
+    @Html.Partial("_changeimg")
+    @Html.Partial("_modalmdp")
+    @{
+        if (ViewBag.err == 330)
+        {
+            <body onLoad=" { $('#loginmodal').modal('show'); }">
+            </body>
+        }
+        if (ViewBag.err == 340)
+        {
+            <body onLoad=" { $('#registremodal').modal('show'); } ">
+            </body>
+        }
+        if (ViewBag.err == 350)
+        {
+            <body onLoad=" { $('#modalmdp').modal('show'); } ">
+            </body>
+        }
+    }
+
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    @*<script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+        </script>*@
+
+</html>
+
+

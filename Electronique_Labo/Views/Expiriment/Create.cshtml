@@ -1,0 +1,299 @@
+﻿@using Electronique_Labo.Models
+@model Electronique_Labo.Models.ViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm("Create", "Expiriment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-body">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="stepwizard ">
+                <div class="stepwizard setup-panel">
+                    <div class="stepwizard-step">
+                      
+                        <a href="#step-1" type="button" class="btn btn-warning btn-circle enlace_desactivado "><strong> 1</strong></a>
+
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#step-2" type="button" class="btn btn-default btn-circle enlace_desactivado"><strong>2</strong></a>
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#step-3" type="button" class="btn btn-default btn-circle enlace_desactivado"><strong> 3</strong></a>
+
+                    </div>
+
+                    <div class="stepwizard-step">
+                        <a href="#step-4" type="button" class="btn btn-default btn-circle enlace_desactivado"><strong>4</strong></a>
+
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#step-5" type="button" class="btn btn-default btn-circle enlace_desactivado"><strong>4</strong></a>
+
+                    </div>
+
+                </div>
+            </div>
+
+        <div class=" form-group setup-content" id="step-1">
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <label class="control-label">TiTre</label>
+                        @Html.TextBoxFor(model => model.Expiriment.Titre, new { @class = "form-validate form-control col", placeholder = "Entrer Titre", required = "true" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Image</label>
+                        <div class="custom-file">
+
+                            <input type="file" class="custom-file-input form-validate " id="ExipirimentImg" required accept="image/x-png,image/gif,image/jpeg" name="ImageeExPrincipale" />
+                            <label id="txtimg"for="ExipirimentImg" class="custom-file-label form-validate" required="true">choisir Image</label>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <div style="margin-bottom: 30px">
+                            <label class="control-label">Secteur</label>
+                            @Html.DropDownListFor(model => model.Expiriment.SecteurId, new SelectList(Model.Secteurs, "Id", "Nom"), "Choisie le Secteur", new { @class = "form-control form-validate  col", required = "true" })
+                        </div>
+                        <div style="margin-bottom: 30px">
+                            <label class="control-label">Niveau</label>
+                            @Html.DropDownListFor(model => model.Expiriment.NiveauId, new SelectList(Model.Niveaus, "Id", "Nom"), "Choisie le Niveau", new {@class = "form-control form-validate  col", required = "true"})
+                        </div>
+
+                        <label class="control-label">Filliere</label>
+                        @Html.ListBoxFor(model => model.Expiriment.SelectedArrayFilliere, new MultiSelectList(Model.Filliers, "Id", "Nom"), new {id = "multiSelectDropDown", multiple = "multiple", required = "true", @class = "form-validate"})
+
+                    </div>
+                    <div class=" form-group col-md-4">
+                        <img id="myImg" src="#" alt="..." class="img-thumbnail rounded float-right" style="height: 200px;width: 350px ">
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-outline-info nextBtn btn-lg float-right pull-right " type="button">Suivant</button>
+                </div>
+            </div>
+
+        <div class=" setup-content" id="step-2">
+
+            <form class="was-validated">
+                <div>
+                    <div class="form-group ">
+                        <label class="control-label">Bute de Expiriment</label>
+                        @Html.TextAreaFor(model => model.Expiriment.But, new { @class = "form-control form-validate col", placeholder = "Entrer Le But de l'expiriment", rows = "3", required = "true" })
+                    </div>
+
+                </div>
+                <div>
+                    <div class="form-group ">
+                        <label class="control-label">Resultat de Expiriment</label>
+                        @Html.TextAreaFor(model => model.Expiriment.ResultatAttendue, new { @class = "form-control form-validate col", placeholder = "Entrer Le Resultat Atendut", rows = "3", required = "true" })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-dark prevBtn btn-lg pull-left" type="button">Précédent </button>
+                    <button class="btn btn-outline-info nextBtn btn-lg pull-right" type="button">Suivant</button>
+                </div>
+            </form>
+        </div>
+
+        <div class=" setup-content" id="step-3">
+            <ul class="nav nav-tabs nav-pills" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link  active" href="#listOutils" role="tablist" data-toggle="tab">Ajouter Outils</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#listConseil" role="tablist" data-toggle="tab">Ajouter des Conseil</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div id="listOutils" role="tabpanel" class="tab-pane active">
+                    <div class="form-group mb-3">
+                    <input id="btnAdd" class="btn btn-success mt-3 mb-2" type="button" value="Ajouter des Outils" onclick="AddTextBox()" />
+                        <input type="text" name="Outildata" class="form-control LastTextBox form-validate col" required="true" placeholder="outil"/>
+                    </div>
+                    <div id="TextBoxContainer" class="form-row">
+                        <!--Textboxes will be added here -->
+                    </div>
+                </div>
+                <div id="listConseil" role="tabpanel" class="tab-pane fade">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-info col-md-4 btn-block mb-2 mt-3 " value="Ajouter" onclick="AddtextBoxConseil()" />
+                        <textarea class="form-control form-validate col-12" name="ConseilData" placeholder="Conseil" id="firstconseil" required="true"></textarea>
+
+                    </div>
+
+                    <div id="ConseilContainner">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-5">
+                <button class="btn btn-outline-dark prevBtn btn-lg pull-left" type="button">Précédent </button>
+                <button class="btn btn-outline-info nextBtn btn-lg pull-right" type="button">Suivant</button>
+            </div>
+        </div>
+
+        <div id="step-4" class="setup-content" >
+                <ul class="nav nav-tabs nav-pills" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link  active" href="#list-item-1" role="tablist" data-toggle="tab">Ajouter Image</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#list-item-2" role="tablist" data-toggle="tab">Ajouter Fichier Telecharger</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="list-item-1" role="tabpanel" class="tab-pane active">
+                        <section class="form-group col-md-4">
+                            <input type="button" class="btn btn-warning btn-block mt-4" onclick="AddGroupImage()" value="Ajouter">
+                        </section>
+
+                        <div id="ImageContainner" class="form-group">
+                            <div class="row">
+                                <div class="form-group col-md-8">
+                                    <label class="control-label">TiTre</label>
+                                    <input type="text" class="form-control col" id="ImageTiTle" name="UploadTitle" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="control-label">Image</label>
+                                    <div class="custom-file">
+
+                                        <input type="file" id="FirstImage" class="form-validate" name="UploadImage" accept="image/x-png,image/gif,image/jpeg" required="true" >
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div id="list-item-2" role="tabpanel" class="tab-pane fade">
+                        <section class="form-group col-md-4">
+                            <input type="button" class="btn btn-info btn-block mt-4" id="AddGroupDrive" value="Ajouter">
+                        </section>
+                        <div id="FileContainner" class="form-group">
+                            <div class="row">
+                                <div class="form-group col-md-8">
+                                    <label class="control-label">TiTre</label>
+                                    <input type="text" class="form-control col" id="DriveTiTle" name="UploadTitleDrive" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="control-label">File</label>
+                                    <div class="custom-file">
+
+                                        <input type="file" id="FirstDrive" name="UploadDrive">
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-dark prevBtn btn-lg pull-left" type="button">Précédent </button>
+                    <button class="btn btn-outline-info nextBtn btn-lg pull-right" type="button">Suivant</button>
+
+                </div>
+            </div>
+
+        <div class=" setup-content" id="step-5">
+                <div class="form-group col-md ">
+
+                    <label>Autre Note</label>
+                    @Html.TextAreaFor(model => model.Expiriment.Notes, new { @class = "form-control col", placeholder = "Ajouter des Notes", rows = "6" })
+                </div>
+                <div class="form-group mt-5">
+                    <button class="btn btn-outline-dark prevBtn btn-lg pull-left" type="button">Précédent </button>
+                    <button class="btn btn-outline-success float-right btn-lg pull-right" type="submit">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/ExpirimentAddEdite.js"></script>
+    <style>
+        body {
+            margin-top: 40px;
+            background-color: #222;
+        }
+
+        .stepwizard-step p {
+            margin-top: 10px;
+        }
+
+        .stepwizard-row {
+            display: table-row;
+        }
+
+        .stepwizard {
+            display: table;
+            width: 50%;
+            position: relative;
+        }
+
+        .stepwizard-step button[disabled] {
+            filter: alpha(opacity=100) !important;
+        }
+
+        .stepwizard-row:before {
+            top: 14px;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 1px;
+            background-color: #ccc;
+        }
+
+        .stepwizard-step {
+            display: table-cell;
+            text-align: center;
+            position: relative;
+        }
+
+        .btn-circle {
+            width: 200px;
+            height: 50px;
+            
+            text-align: center;
+            padding: 17px 0;
+            margin-left: 10px;
+            font-size: 12px;
+            
+        }
+
+        .nextBtn {
+            float: right
+        }
+
+
+        .enlace_desactivado {
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .setup-content {
+            margin-top: 10px
+        }
+
+        .has-error {
+            border: 2px solid red;
+        }
+    </style>
+}

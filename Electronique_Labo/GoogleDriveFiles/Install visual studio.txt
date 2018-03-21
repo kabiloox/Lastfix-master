@@ -1,0 +1,12 @@
+salut et bonjour a touts dans cette video en va vu comment install visual studio le produit de microsoft
+/////////////////////////////////////////////////////////////////////////////////////
+salut et bounjour a touts dans cette video 
+Nous allons faire le premier programme en language c#   Nous allons ouvrir Visual Studio et créer
+///////////////////////////:
+Nous débuterons par discus tous les principes de programmation dont vous avez besoin pour commencer à programmer Python.
+ Nous allons commencer par installer l'environnement de développement, puis vous exécuterez votre première application Python,
+ et comprendrez comment fonctionne le flux de programme en Python. Ensuite, nous parlerons des variables et des opérations mathématiques et proirites. 
+Ensuite, nous prendrons la logique et la prise de décision, puis nous parlerons des boucles. Ensuite, nous parlerons de la façon de travailler avec les fichiers.
+ Ensuite, nous parlerons des fonctions et du concept de POO que vous devez utiliser lorsque vous programmez des applications avec Python,
+ puis nous parlerons du multi-traitement et de la possibilité d'exécuter plusieurs processus.
+ temps, alors nous parlerons des collections et de la collection de types que vous utiliserez pour de meilleures performances en fonction de votre application.

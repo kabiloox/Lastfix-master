@@ -1,0 +1,38 @@
+slt bonjour a toutes bienvenue dans cette coures de langague c# pour les debutant
+Je me presente
+Je m'appelle Abdellah je serai ton instructeur personnel dans ce cours
+J'ai un Master en génie logiciel et je suis devlopeur applications mobile et web et desktop,J'ai travaillé dans différentes entreprises
+ et j'ai  4 ans en tant que développeur
+et je veux partager cette connaissance avec vous
+alors Ce cours est la première partie de mes trois parties de langague c#
+ Dans cette  1 partie, nous allons commencer avec un niveau débutant Qui ne sait rien dans la programmation
+ Ensuite, dans la deuxième partie, nous allons passer au niveau intermédiaire en va voir les class les interface etc....
+et Dans la  3 partie ,nous allons passer au niveau avancé dans le langague c#
+/////////////////////////////////////////////////////////////////////////////
+///Ce que nous allons apprendre à cette session.....
+Dans ce cours, je vais vous apprendre à travailler avec différents types de données(int,float,string ,boolean,enum,struct...)
+
+et Comment contrôler le flux de vos programmes en utilisant les conditionnelles
+
+comment travailler avec les boucles de repetetive est comment arrêter cette boucles
+et travailler avec les operations est les fonction et comment  Déboguez votre applications
+
+Je veux vous montrer quelles sont les erreurs courantes et comment les résoudre
+Je vais aussi vous enseigner de bonnes pratiques de programmation
+ mon but  de cree cette cours est de vous aider à devenir un bon programmeur. 
+
+J'ai donc conçu un certain nombre d'exercices de programmation qui vous aident à améliorer vos capacités de programmation 
+
+dans ce cours je vais vous apprendre toutes les bases de language C # d'une manière claire, concise et étape par étape.
+ Notez simplement qu'il vous enseignera également les meilleures pratiques et les raccourcis pour vous aider à devenir un meilleur développeur.
+
+donc si vous voulez apprendre c sharp maintenant Et devenir un programmeur réussi allez-y cliquez sur le button  achter maintenant et Acheter ce cours 
+ et j'espère que vous aimez cette cours
+////////////////////////////////////////////////////////////////////////////
+Language C # est le language le plus exquis qui peut être utilisé pour construire une variété d'applications. 
+Avec C #, 
+vous pouvez créer  des applications de bureau. 
+ et des applications mobiles (pour Windows phone, Android et iOS) en utilisant la plateforme (Xamarin), 
+On peux aussi devloper des jeux(2d et 3d)  en utilisant la plateforme (Unity)
+, vous pouvez aussi faire des sites Web en utilisant (asp.net)
+donc Tant que vous connaissez les bases de language  C #, vous pouvez travailler dans tous les domaines que vous voulez.

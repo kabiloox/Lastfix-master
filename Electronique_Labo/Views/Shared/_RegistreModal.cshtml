@@ -1,0 +1,65 @@
+﻿@model Electronique_Labo.Models.ViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<!-- The Modal -->
+<div class="modal fade" id="registremodal" style="margin-top: 100px">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="padding-left:20px">
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container1">
+                    <!-- Main  -->
+                    <div class="mainarea">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h4 class="text-info" style=" margin-top: 20px; margin-bottom: 20px; width: 82%"><b style="color: #c13bf9">Procurez-vous un nouveau compte et bénéficiez de toute la personnalisation que nous offrons.</b></h4>
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <p style="color:#9A00E9"> <label for="cree" style="margin-bottom: 5px;"><b>Crée Un nouveau compte</b></label></p>
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.RegisterViewModel.Email, new { @class = "form-control", style = "max-width:400px ", id = "cree", placeholder = "Email" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.RegisterViewModel.Password, new { @class = "form-control", style = "max-width:400px ", placeholder = "Mot de Pass" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "form-control", style = "max-width:400px ", placeholder = "Confirmation de Mot de pass" })
+                                    <p style="margin-top: 20px">Vous avez déjà un compte? <a onclick="fny()" style="color: #c13bf9"href="#"><b>Se connecter</b></a></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input width="130" type="submit" value="créer un compte" class="btn  btn-sm" style="margin-bottom: -20px; margin-left: 260px; background-color: #C13BF9;color: azure" />
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                    <!-- Side  -->
+                    <aside class="sidebar">
+                        <img src="~/Content/icons/Registre.jpg" />
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function fny() {
+        $("#registremodal").modal('toggle');
+        $("#loginmodal").modal('show');
+    };
+
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+} 

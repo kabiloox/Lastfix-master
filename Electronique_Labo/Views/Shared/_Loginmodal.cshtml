@@ -1,0 +1,111 @@
+﻿<!-- The Modal -->
+@using Electronique_Labo.Models
+@model ViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="modal fade " id="loginmodal" style="margin-top: 100px;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="container1">
+                        <!-- Main  -->
+                        <div class="mainarea">
+                            <section id="loginForm">
+                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <h4 class="text-info" style="margin-top: 20px; margin-bottom: 40px;width: 82%"><b>Inscrivez-vous pour obtenir votre propre expérience Electronique Labo personnalisée!.</b></h4>
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <p class="text-primary"> <label for="emailuti" style="margin-bottom: 10px;font-size: larger"><b>Log In</b></label></p>
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(m => m.LoginViewModel.Email, new { @class = "form-control", id = "emailuti", style = "max-width:400px ", placeholder = "Email" })
+                                            @Html.ValidationMessageFor(m => m.LoginViewModel.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            @Html.PasswordFor(m => m.LoginViewModel.Password, new { @class = "form-control", style = "max-width:400px ", placeholder = "Mot de Pass" })
+                                            @Html.ValidationMessageFor(m => m.LoginViewModel.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class=" col-md-10">
+                                            <div class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(m => m.LoginViewModel.RememberMe, new { @class = "custom-control-input", id = "memo" })
+                                                @Html.Label("memo", "mémorisé?", new { @class = "custom-control-label text-primary" })
+                                            </div>
+                                            <p  style="margin-top: 10px">Vous n'avez pas de compte? <a onclick="fnt()" class="text-info " id="test1" href="#"><b>inscrire vous</b></a></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input width="130" type="submit" value="Se Connecter" class="btn btn-info btn-sm" style="margin-bottom: -20px;margin-left: 300px" />
+                                    </div>
+                                }
+                            </section>
+                        </div>
+                        <!-- Side  -->
+                        <aside class="sidebar">
+                            <img src="~/Content/icons/Login.jpg" />
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+    .container1 {
+        max-width: 1000px;
+        height: 500px;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .sidebar > img {
+        width: 50%;
+        float: left;
+        height: 500px;
+        margin-top: 0;
+    }   .sidebar2 {
+        width: 50%;
+        float: left;
+        height: 500px;
+        margin-top: 0;
+    }
+
+    .mainarea {
+        width: 50%;
+        float: left;
+        height: 100%
+    }
+
+    .modal-body {
+        padding: 0 0 0 0;
+        width: 1000px;
+    }
+
+    .modal-content {
+        width: 1000px;
+        margin-left: -120px;
+    }
+</style>
+<script>
+    function fnt() {
+        $("#loginmodal").modal('toggle');
+        $("#registremodal").modal('show');
+    };
+
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

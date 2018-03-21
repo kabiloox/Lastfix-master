@@ -1,0 +1,45 @@
+﻿<div style="margin-bottom: 100px">
+    <nav class="navbar fixed-top navbar-light bg-light navbar-expand-md bg-faded justify-content-center" >
+        <a href="@Url.Action("Index", "Home")" class="navbar-brand ">
+            <img src="~/Content/icons/Capture.PNG" style="max-height: 70px" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse w-100" id="navbarResponsive">
+            <ul class="navbar-nav w-100 justify-content-center">
+                <li class="nav-item">
+                    @Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Expiriments <span class="caret"></span></a>
+                    <div class="dropdown-menu" aria-labelledby="themes">
+                        @Html.ActionLink("Ajouter une Expiriment", "Create", "Expiriment", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink("Liste Des Expiriments", "", "", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes"> propriétés secondaires <span class="caret"></span> </a>
+                    <div class="dropdown-menu" aria-labelledby="themes">
+                        @Html.ActionLink("Listes ", "", "", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink("  XXX", "", "", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("XXXX  ", "", "", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                    </div>
+                </li>
+            </ul>
+    
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">                         
+                @Html.Partial("_LoginPartial")
+            </ul>
+        </div>
+    </nav>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

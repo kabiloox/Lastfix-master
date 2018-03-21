@@ -1,0 +1,54 @@
+﻿@using Electronique_Labo.Models
+@using Microsoft.AspNet.Identity
+
+<!-- Modal -->
+<div class="modal fade" id="modalimg" role="dialog">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content modal-sm" style="margin-top: 150px">
+            <div class="modal-header">
+             
+                <h4 class="modal-title  font-weight-bold">Changer La photo de profile</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("addimg", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    
+                    ApplicationDbContext db = new ApplicationDbContext();
+                    string id = User.Identity.GetUserId();
+
+                    var find = db.Profileimgs.SingleOrDefault(c => c.ApplicationUserId == id);
+                    if (find != null)
+                    {
+                        var lmaoImage = find.image;
+                      
+                            <div  style="margin-top: 20px; margin-bottom: 20px;margin-left:100px"><img  width="65" height="65" src="~/profileimage/@lmaoImage" /> </div>
+                           
+                            <input style="margin-left: 20px" type="file" accept="image/x-png,image/gif,image/jpeg" name="Pimg" id="vimg"  required="" class="btn-primary"/>
+                            <hr/>
+         
+                    }
+                    else
+                    {
+                             
+                        <div style="margin-top: 20px; margin-bottom: 20px;margin-left:100px"> <img width="60" height="60" class="rounded-circle" src="~/profileimage/character-doctor-scientist-professional-vector-12016062.jpg" /></div>
+                        <input style="margin-left: 20px" type="file" accept="image/x-png,image/gif,image/jpeg" name="Pimg" id="vimg"
+                               required="" class="btn-primary" />
+                        <hr/>
+                  
+                    }
+                    
+                    <button style="text-align: center;margin-left: 80px" class="btn btn-success">Enregistrer!</button>
+
+                        
+                        
+                
+                }
+            </div>
+           
+        </div>
+      
+    </div>
+</div>
