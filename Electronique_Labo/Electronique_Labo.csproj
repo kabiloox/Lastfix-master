@@ -227,9 +227,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803210127366_initialm.cs" />
-    <Compile Include="Migrations\201803210127366_initialm.Designer.cs">
-      <DependentUpon>201803210127366_initialm.cs</DependentUpon>
+    <Compile Include="Migrations\201803210213362_fixerror.cs" />
+    <Compile Include="Migrations\201803210213362_fixerror.Designer.cs">
+      <DependentUpon>201803210213362_fixerror.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -408,8 +408,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803210127366_initialm.resx">
-      <DependentUpon>201803210127366_initialm.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803210213362_fixerror.resx">
+      <DependentUpon>201803210213362_fixerror.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -427,7 +427,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56449</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
