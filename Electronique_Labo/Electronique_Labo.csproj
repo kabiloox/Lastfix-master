@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201803210127366_initialm.Designer.cs">
       <DependentUpon>201803210127366_initialm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803211457475_dateexp.cs" />
+    <Compile Include="Migrations\201803211457475_dateexp.Designer.cs">
+      <DependentUpon>201803211457475_dateexp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Conseil.cs" />
@@ -260,6 +264,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\chosen\chosen-sprite.png" />
     <Content Include="Content\chosen\chosen.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\icons\5669e0ce-c88c-4a54-a06d-77c16ab53271.png" />
     <Content Include="Content\icons\Capture.PNG" />
     <Content Include="Content\icons\chimie.png" />
@@ -267,7 +273,12 @@
     <Content Include="Content\icons\physique.png" />
     <Content Include="Content\icons\Registre.jpg" />
     <Content Include="Content\icons\science.png" />
+    <Content Include="Content\Slick\ajax-loader.gif" />
+    <Content Include="Content\Slick\fonts\slick.svg" />
+    <Content Include="Content\Slick\slick-theme.css" />
+    <Content Include="Content\Slick\slick.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="GoogleDriveFiles\2d.jpg" />
@@ -287,8 +298,11 @@
     <Content Include="Images\ImageExpiriment\csharp-.png" />
     <Content Include="profileimage\44297710_p0.jpg" />
     <Content Include="profileimage\character-doctor-scientist-professional-vector-12016062.jpg" />
+    <Content Include="profileimage\chemical-laboratory-vector-1069112.jpg" />
     <Content Include="profileimage\dark_souls_bonfire_sword_character_relax_19815_1920x1080.jpg" />
     <Content Include="profileimage\FB_IMG_1431802268288.jpg" />
+    <Content Include="profileimage\laboratory-people-assistants-working-in-scientific-vector-15268445.jpg" />
+    <Content Include="profileimage\laboratory-research-vector-14215225.jpg" />
     <Content Include="profileimage\photoUM80123D.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -316,6 +330,17 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\Slick\slick.scss" />
+    <Content Include="Content\Slick\slick-theme.scss" />
+    <Content Include="Content\Slick\fonts\slick.woff" />
+    <Content Include="Content\Slick\fonts\slick.ttf" />
+    <Content Include="Content\Slick\fonts\slick.eot" />
+    <Content Include="App_Code\GlyphIcon.cshtml" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\ExpirimentAddEdite.js" />
@@ -338,6 +363,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Slick\slick.js" />
+    <Content Include="Scripts\Slick\slick.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -410,6 +437,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803210127366_initialm.resx">
       <DependentUpon>201803210127366_initialm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803211457475_dateexp.resx">
+      <DependentUpon>201803211457475_dateexp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

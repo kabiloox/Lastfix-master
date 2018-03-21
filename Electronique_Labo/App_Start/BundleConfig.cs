@@ -10,6 +10,7 @@ namespace Electronique_Labo
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(                                                                                  
                         "~/Scripts/umd/popper.min.js",
+                        "~/Scripts/Slick/slick.min.js",
                 "~/Scripts/chosen.jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -28,7 +29,9 @@ namespace Electronique_Labo
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
+                "~/Content/Slick/slick-theme.css",
+                "~/Content/Slick/slick.css",
+                      "~/Content/bootstrap-lumen.css",                                        
                       "~/Content/site.css",
                 "~/Content/chosen/chosen.min.css"));
         }

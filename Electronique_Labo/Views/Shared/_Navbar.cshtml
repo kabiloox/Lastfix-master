@@ -1,40 +1,49 @@
-﻿<div style="margin-bottom: 100px">
-    <nav class="navbar fixed-top navbar-light bg-light navbar-expand-md bg-faded justify-content-center" >
-        <a href="@Url.Action("Index", "Home")" class="navbar-brand ">
-            <img src="~/Content/icons/Capture.PNG" style="max-height: 70px" />
+﻿<div style="margin-bottom: 65px">
+    <nav class="navbar fixed-top navbar-light bg-light navbar-expand-md bg-faded justify-content-center"style="height: 65px" >
+        <a href="@Url.Action("Index", "Home")" class="navbar-brand" style="margin-left:60px">
+            <img src="~/Content/icons/Capture.PNG" style="max-height: 65px;margin-left:50px" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse w-100" id="navbarResponsive">
-            <ul class="navbar-nav w-100 justify-content-center">
-                <li class="nav-item">
-                    @Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Expiriments <span class="caret"></span></a>
-                    <div class="dropdown-menu" aria-labelledby="themes">
-                        @Html.ActionLink("Ajouter une Expiriment", "Create", "Expiriment", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
-                        <div class="dropdown-divider"></div>
-                        @Html.ActionLink("Liste Des Expiriments", "", "", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+            <ul class="navbar-nav w-100 justify-content-center"> 
+              
+                <li class="nav-item dropdown">            
 
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes"> propriétés secondaires <span class="caret"></span> </a>
-                    <div class="dropdown-menu" aria-labelledby="themes">
-                        @Html.ActionLink("Listes ", "", "", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                    <a class="nav-link dropdown-toggle  " data-toggle="dropdown" href="#" id="themes"> <i class="navbar-toggler-icon"></i><b>Categories</b></a>
+                    <div class="dropdown-menu " aria-labelledby="themes">
+                        <a style="max-width: 50px" href="@Url.Action("Index", "Home")" style="">
+                            <img align="middle" src="~/Content/icons/chimie.png" style="max-height: 50px"/>
+                        </a><b class="text-primary">Chimie</b>
                         <div class="dropdown-divider"></div>
-                        @Html.ActionLink("  XXX", "", "", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
-                        @Html.ActionLink("XXXX  ", "", "", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                        <a href="@Url.Action("Index", "Home")" style="">
+                            <img src="~/Content/icons/physique.png" style="max-height: 50px"/>
+                        </a> <b class="text-primary">Physique</b>
+                        <div class="dropdown-divider"></div>
+                        <a href="@Url.Action("Index", "Home")" style="">
+                            <img src="~/Content/icons/science.png" style="max-height: 50px"/>
+                        </a> <b class="text-primary">Science</b>
                     </div>
                 </li>
+                
             </ul>
-    
-            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">                         
+             <input  style="max-width: 400px;margin-left: -100px" class="form-control mr-sm-2 font-weight-bold" type="text" placeholder="Recherche des expiriments">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Chercher</button>
+         
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="nav-item dropdown" style="margin-right: 200px; margin-top: 18px">
+                        <a class="nav-link dropdown-toggle  " data-toggle="dropdown" href="#" id="themes"> <i class="navbar-toggler-icon"></i><b>Expiriments</b></a>
+                        <div class="dropdown-menu " aria-labelledby="themes">
+                            @Html.ActionLink("Mes Expiriments ", "", "", routeValues: null, htmlAttributes: new {@class = "dropdown-item font-weight-bold"})
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Mes Favorites ", "", "", routeValues: null, htmlAttributes: new {@class = "dropdown-item font-weight-bold"})
+                        </div>
+                    </li>
+                }
+              
                 @Html.Partial("_LoginPartial")
             </ul>
         </div>

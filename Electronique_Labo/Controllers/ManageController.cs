@@ -255,6 +255,7 @@ namespace Electronique_Labo.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            ViewBag.err = 350;
             return View();
         }
 
