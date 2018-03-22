@@ -171,7 +171,7 @@ namespace Electronique_Labo.Controllers
             }
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.RegisterViewModel.Name, Email = model.RegisterViewModel.Email };
+                var user = new ApplicationUser { UserName = model.RegisterViewModel.Email,  Email= model.RegisterViewModel.Email,PhoneNumber = model.RegisterViewModel.Name};
                 var result = await UserManager.CreateAsync(user, model.RegisterViewModel.Password);
                 if (result.Succeeded)
                 {
