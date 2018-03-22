@@ -16,9 +16,11 @@ namespace Electronique_Labo.Models
         public string But { get; set; }
         public string ResultatAttendue { get; set; }
         public string Notes { get; set; }
-        
+        public DateTime DateTime { get; set; }
+
+
         //----------------ICollection---------------------------//
-        
+
         public virtual ICollection<Images> Imageses { get; set; }
         public virtual ICollection<Outil> Outils { get; set; }
         public virtual ICollection<Conseil> Conseils { get; set; }

@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
+
 </head>
     @if (Request.IsAuthenticated)
     {
@@ -14,6 +16,7 @@
     }
     else
     {
+
         @Html.Partial("_Loginmodal")
         @Html.Partial("_RegistreModal")
 
