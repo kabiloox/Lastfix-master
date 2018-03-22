@@ -315,10 +315,6 @@
     <Content Include="Images\GroupsImage\LearningCSharp.jpg" />
     <Content Include="Images\GroupsImage\logo_chash.png" />
     <Content Include="Images\GroupsImage\programming2.jpg" />
-    <Content Include="Images\ImageExpiriment\app-ios-png-4.png" />
-    <Content Include="Images\ImageExpiriment\Call-of-Duty-Black-Ops-Run-and-Gun.jpg" />
-    <Content Include="Images\ImageExpiriment\Capture.PNG" />
-    <Content Include="Images\ImageExpiriment\csharp-.png" />
     <Content Include="profileimage\44297710_p0.jpg" />
     <Content Include="profileimage\animation-flat-line-knowledge-and-creative-education-graphic-design-flat-creativity-school-and-stationary-sign-and-symbol-education-icon-with-isolated-background.png" />
     <Content Include="profileimage\character-doctor-scientist-professional-vector-12016062.jpg" />
@@ -445,9 +441,12 @@
     <Content Include="Views\Shared\_Loginmodal.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_RegistreModal.cshtml" />
+    <Content Include="Views\Expiriment\GetExpiriment.cshtml" />
+    <Content Include="Views\Expiriment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\ImageExpiriment\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

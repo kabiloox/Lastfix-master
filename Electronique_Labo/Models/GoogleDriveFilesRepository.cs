@@ -25,9 +25,9 @@ namespace Electronique_Labo.Models
         {
             //get Credentials from client_secret.json file 
             UserCredential credential;
-            using (var stream = new FileStream(@"E:\client_secret.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(@"D:\client_secret.json", FileMode.Open, FileAccess.Read))
             {
-                String FolderPath = @"E:\";
+                String FolderPath = @"D:\";
                 String FilePath = Path.Combine(FolderPath, "DriveServiceCredentials.json");
 
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(

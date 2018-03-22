@@ -115,6 +115,7 @@ namespace Electronique_Labo
             db.Entry(viewModel.Expiriment).State = EntityState.Modified;
             db.SaveChanges();
             // Update Outils --------------------------------------------
+      
             var outils = db.Outils.ToList();
             outils = outils.Where(s => s.ExpirimentId == viewModel.Expiriment.Id).ToList();
             db.Outils.RemoveRange(outils);
@@ -127,19 +128,22 @@ namespace Electronique_Labo
             db.Conseils.RemoveRange(Conseil);
             OutilConseilImage.SaveConseil(ConseilData, viewModel.Expiriment.Id);
             //Update Groups Image-----------------------------------------------------------------------
-            var GroupsImage = UpdateImage.ToList();
-            var list=db.Imageses.Where(s => s.ExpirimentId == viewModel.Expiriment.Id).ToList();
+            var list = db.Imageses.Where(s => s.ExpirimentId == viewModel.Expiriment.Id).ToList();
             db.Imageses.RemoveRange(list);
-            db.SaveChanges();
-            foreach (var img in GroupsImage)
-            {
-                var images = new Images
-                { 
-                    Image = img,
-                    ExpirimentId = viewModel.Expiriment.Id
-                };
-                db.Imageses.Add(images);
+            if (UpdateImage != null) {
+                var GroupsImage = UpdateImage.ToList();
+          
                 db.SaveChanges();
+                foreach (var img in GroupsImage)
+                {
+                    var images = new Images
+                    {
+                        Image = img,
+                        ExpirimentId = viewModel.Expiriment.Id
+                    };
+                    db.Imageses.Add(images);
+                    db.SaveChanges();
+                }
             }
             OutilConseilImage.saveImage(UploadImage, UploadTitle, viewModel.Expiriment.Id);
 
@@ -215,7 +219,7 @@ namespace Electronique_Labo
             return View("Index",Vn);
         }
         //Favorite Controller
-        [HttpPost]
+      
         public ActionResult Addtofavorite(int id)
         {
 
@@ -238,7 +242,7 @@ namespace Electronique_Labo
 
 
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("FavoriteIndex");
 
         }
 
