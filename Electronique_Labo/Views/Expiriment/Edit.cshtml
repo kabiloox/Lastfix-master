@@ -74,9 +74,7 @@
                         </div>
                         <label class="control-label">Filliere</label>
                         @Html.ListBoxFor(model => model.Expiriment.SelectedArrayFilliere, new MultiSelectList(Model.Filliers, "Id", "Nom"), new {id = "multiSelectDropDown", multiple = "multiple", required = "true", @class = "form-validate"})
-                        <div>
-                            <input type="submit" value="add" />
-                        </div>
+                        
 
 
                     </div>
@@ -140,7 +138,7 @@
             
                     <div id="listConseil" role="tabpanel" class="tab-pane fade">
                         <div class="form-group">
-                            <input type="button" class="btn btn-info col-md-4 btn-block mb-2 mt-3 " value="Ajouter" id="addConseailInput" />
+                            <input type="button" class="btn btn-info col-md-4 btn-block mb-2 mt-3 " value="Ajouter" id="addConseailInput" onclick="AddtextBoxConseil()" />
                            
                         </div>
 
@@ -180,7 +178,7 @@
                 <div class="tab-content">
                     <div id="UpdateGroupImage" role="tabpanel" class="tab-pane active">
                         <section class="form-group col-md-4">
-                            <input type="button" class="btn btn-warning btn-block mt-4" id="AddGroupImage" value="Ajouter">
+                            <input type="button" class="btn btn-warning btn-block mt-4"  onclick="AddGroupImage()"value="Ajouter">
                         </section>
 
                         <div id="ImageContainner" class="form-group">
@@ -236,7 +234,7 @@
                     </div>
                     <div id="UpdateGroupDrive" role="tabpanel" class="tab-pane fade">
                         <section class="form-group col-md-4">
-                            <input type="button" class="btn btn-info btn-block mt-4" id="AddGroupDrive" value="Ajouter">
+                            <input type="button" class="btn btn-info btn-block mt-4" id="AddGroupDrive" onclick="AddDriveInput()" value="Ajouter">
                         </section>
 
                         <div id="FileContainner" class="form-group">
@@ -254,7 +252,7 @@
                                         <input type="text" class="form-control col" id="DriveUp" name="UpdateDrive" value="@listDrive.Name" readonly="readonly" />
                                     </div>
                                     <div class="form-group col-md-2">
-                                       <a href="https://drive.google.com/file/d/@listDrive.FileId/view" class="btn btn-primary btn-block">Afficher</a>
+                                       <a href="https://drive.google.com/file/d/@listDrive.FileId/view"  target="_blank" class="btn btn-primary btn-block">Afficher</a>
 
                                     </div>
                                     <div class="form-group col-md-2">

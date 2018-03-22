@@ -7,13 +7,13 @@ namespace Electronique_Labo.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class initialm : IMigrationMetadata
+    public sealed partial class addTableFavoritefix : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initialm));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addTableFavoritefix));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803210127366_initialm"; }
+            get { return "201803221328156_add-Table-Favoritefix"; }
         }
         
         string IMigrationMetadata.Source

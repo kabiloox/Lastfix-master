@@ -20,7 +20,13 @@ namespace Electronique_Labo
         // GET: Expiriment
         public ActionResult Index()
         {
-            return View();
+            var IdUser = User.Identity.GetUserId();
+            var Vn = new ViewModel
+            {
+                Expiriments = db.Expiriments.Where(s=>s.ApplicationUserId== IdUser).ToList(),
+                Niveaus = db.Niveaus.ToList()
+            };
+            return View(Vn);
         }
 
         public ActionResult Create()
@@ -44,6 +50,7 @@ namespace Electronique_Labo
                 var ImageExprirmentPath = Path.Combine(Server.MapPath("~/Images/ImageExpiriment"), ImageeExPrincipale.FileName);
                 ImageeExPrincipale.SaveAs(ImageExprirmentPath);
                 VN.Expiriment.ApplicationUserId = User.Identity.GetUserId();
+                VN.Expiriment.DateTime = DateTime.Now;
                 VN.Expiriment.Image = ImageeExPrincipale.FileName;
                 VN.Expiriment.IdFilliere = string.Join(",", VN.Expiriment.SelectedArrayFilliere);
                 db.Expiriments.Add(VN.Expiriment);
@@ -85,7 +92,7 @@ namespace Electronique_Labo
             vm.Outils = db.Outils.Where(s => s.ExpirimentId == id).ToList();
             vm.Conseils = db.Conseils.Where(s => s.ExpirimentId == id).ToList();
             vm.Imageses = db.Imageses.Where(s => s.ExpirimentId == id).ToList();
-            vm.GoogleDriveFiles = db.GoogleDriveFiles.ToList();
+            vm.GoogleDriveFiles = db.GoogleDriveFiles.Where(s => s.ExpirimentId == id).ToList();
             vm.Expiriment = exp;
             vm.Expiriment.SelectedArrayFilliere= exp.IdFilliere.Split(',').ToArray();
 
@@ -104,6 +111,7 @@ namespace Electronique_Labo
                 viewModel.Expiriment.Image = EditImage.FileName;
             }
             viewModel.Expiriment.IdFilliere = string.Join(",", viewModel.Expiriment.SelectedArrayFilliere);
+            viewModel.Expiriment.DateTime = DateTime.Now;
             db.Entry(viewModel.Expiriment).State = EntityState.Modified;
             db.SaveChanges();
             // Update Outils --------------------------------------------
@@ -137,6 +145,111 @@ namespace Electronique_Labo
 
             //Update Google Drive
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var Expiriment = db.Expiriments.Find(id);
+            db.Expiriments.Remove(Expiriment);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult GetExpiriment(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var exp = db.Expiriments.Find(id);
+            if (exp == null)
+            {
+                return HttpNotFound();
+            }
+            var ImageUser = exp.ApplicationUserId;
+            var vm = new ViewModel();
+            vm.Niveaus = db.Niveaus.ToList();
+            vm.Filliers = db.Filliers.ToList();
+            vm.Secteur = db.Secteurs.Single(s=>s.Id== exp.SecteurId);
+            vm.Outils = db.Outils.Where(s => s.ExpirimentId == id).ToList();
+            vm.Conseils = db.Conseils.Where(s => s.ExpirimentId == id).ToList();
+            vm.Imageses = db.Imageses.Where(s => s.ExpirimentId == id).ToList();
+            vm.GoogleDriveFiles = db.GoogleDriveFiles.Where(s => s.ExpirimentId == id).ToList();
+            vm.Profileimg = db.Profileimgs.Single(s => s.ApplicationUserId == ImageUser);
+            vm.Expiriment = exp;
+            vm.Expiriment.SelectedArrayFilliere = exp.IdFilliere.Split(',').ToArray();
+
+            return View(vm);
+        }
+        public ActionResult MyExpSearch(int? id,string title)
+        {
+            var IdUser = User.Identity.GetUserId();
+            //listerecherche.Where(s => s.Nom_Produit.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+            var Vn = new ViewModel();
+            if (title == null)
+            {
+                Vn.Expiriments = db.Expiriments.Where(s => s.ApplicationUserId == IdUser).ToList()
+                    .Where(s => s.NiveauId == id).ToList();
+            }
+            else
+            {
+                if (id == null)
+                {
+                    Vn.Expiriments = db.Expiriments.Where(s => s.ApplicationUserId == IdUser).ToList()
+                        .Where(s => s.Titre.IndexOf(title, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                }
+                else
+                {
+                    Vn.Expiriments = db.Expiriments.Where(s => s.ApplicationUserId == IdUser).ToList()
+                        .Where(s => s.NiveauId == id).ToList()
+                        .Where(s => s.Titre.IndexOf(title, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+
+
+                }
+            }
+            Vn.Niveaus = db.Niveaus.ToList();
+            return View("Index",Vn);
+        }
+        //Favorite Controller
+        [HttpPost]
+        public ActionResult Addtofavorite(int id)
+        {
+
+            var userId = User.Identity.GetUserId();
+            var medcinId = id;
+            var check = db.Favorites.Where(a => a.ExpirimentId == id && a.ApplicationUserId == userId).ToList();
+            if (check.Count < 1)
+            {
+                var favorie = new Favorite();
+                favorie.ExpirimentId = id;
+                favorie.ApplicationUserId = userId;
+                db.Favorites.Add(favorie);
+                db.SaveChanges();
+                TempData["Validation"] = "Expiriment Ajouter dans favorite ";
+
+            }
+            else
+            {
+                TempData["Validation"] = "Expiriment existe D'éja dans favorite";
+
+
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult FavoriteIndex()
+        {
+            var IdUser = User.Identity.GetUserId();
+            var Vn = new ViewModel
+            {
+                Favorites = db.Favorites.Where(s => s.ApplicationUserId == IdUser).ToList()
+            };
+            return View(Vn);
         }
     }
 }

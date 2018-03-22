@@ -33,7 +33,7 @@ namespace Electronique_Labo.Models
         public DbSet<Fillier> Filliers { get; set; }
         public DbSet<Secteur> Secteurs { get; set; }
         public DbSet<Conseil> Conseils { get; set; }
-
+        public DbSet<Favorite> Favorites { get; set; }
         public DbSet<GoogleDriveFile> GoogleDriveFiles { get; set; }
         public static ApplicationDbContext Create()
         {

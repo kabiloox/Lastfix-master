@@ -155,7 +155,7 @@ function GetDynamicImage(value) {
         }
     }
 
-};
+  }
 
 function RemoveImage(button) {
     $(button).parent().remove();

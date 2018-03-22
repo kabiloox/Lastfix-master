@@ -1,0 +1,156 @@
+﻿@model Electronique_Labo.Models.ViewModel
+
+@{
+    ViewBag.Title = "GetExpiriment";
+    
+}
+<head>
+
+
+    <title>Resume - Start Bootstrap Theme</title>
+    <link href="~/Content/resume.css" rel="stylesheet" />
+    <link href="~/Content/resume.min.css" rel="stylesheet" />
+</head>
+
+<div class="navbar navbar-expand-lg navbar-dark  " style="background: #23272B"id="sideNav">
+    <a class="navbar-brand" >   
+        <span class="d-none d-lg-block">
+            <img class="img-fluid img-profile rounded-circle " style="width: 100px;height: 100px" src="~/profileimage/@Model.Profileimg.image"/>    
+        </span>
+    </a>
+    <br/>
+    <br />
+    <div class=" float-left">
+        <h3 class=" float-left text-white">Secteur</h3>
+        <h4 class=" float-left text-white">@Model.Secteur.Nom</h4>
+    </div>
+    <div class="navbar-brand" id="navbarSupportedContent">
+        <h3 class="mb-0 text-primary">Secteur </h3>
+        
+    </div>
+</div>
+
+<div class="container-fluid p-0">
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="about">
+    <div class="my-auto">
+            <h3 class="text-primary float-right">@Model.Expiriment.DateTime.ToShortDateString()</h3>
+            <h2 class="mb-5">@Model.Expiriment.Titre</h2>
+                
+   
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+                <h3 class="mb-0">But de l'expririment</h3>
+                <p class="subheading text-lowercase">Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+            </div>
+            
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+                <h3 class="mb-0">Resultat Attendu</h3>
+                <p class="subheading text-lowercase">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+            </div>
+            
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+                <h3 class="mb-0">les Outils </h3>
+                <ul>
+                    @foreach (var outi in Model.Outils)
+                    {
+                        <li class="subheading"> @outi.Nom</li>
+                    }
+                </ul>
+            </div>
+            
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+                <h3 class="mb-0">les Conseil </h3>
+                <ul>
+                    @foreach (var conseil in Model.Conseils)
+                    {
+                        <li class="subheading"> @conseil.Nom</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+                <h3 class="mb-0">les Image de L'expiriment </h3>
+                <ul>
+                    <div class="row mt-2">
+                    @foreach (var v in Model.Imageses)
+                    {
+                        var myModal = "myModal" + v.Id;
+                        <div class="card mr-2 mb-2" style="width: 18rem;">
+                            <img class="card-img-top" src="~/Images/GroupsImage/@v.Image" style="height: 180px; width: 100%; display: block;" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">@v.Titre</p>
+                            </div>
+                            <div class="card-footer">
+                         
+                                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#@myModal"
+                                            data-whatever="@v.Id">
+                                        Aficher
+                                    </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Image</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="~/Images/GroupsImage/@v.Image" class="img-fluid" alt="Responsive image">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                     
+                  </div>
+                </ul>
+            </div>
+        </div>
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+                @if (Model.GoogleDriveFiles.Count > 0)
+                {
+                <h3 class="mb-0">Fichier Pour Telecharger </h3>
+                }
+                
+                <ul>
+                    <div class="row mt-2">
+                        @foreach (var v in Model.GoogleDriveFiles)
+                        {
+                            <div class="card text-white  mb-3 mr-2" style="max-width: 20rem;">
+                                <div class="card-header">@v.Name</div>
+                                <div class="card-body">
+                                    <h4 class="card-title text-dark">@v.TiTle</h4>
+
+                                </div>
+                                <div class="card-footer">
+                                    <a href="https://drive.google.com/file/d/@v.FileId/view" class="btn btn-primary" target="_blanck">Telecharger</a>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</div>
+

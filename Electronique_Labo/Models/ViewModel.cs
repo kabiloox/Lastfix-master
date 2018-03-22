@@ -36,5 +36,8 @@ namespace Electronique_Labo.Models
         public ChangePasswordViewModel ChangePasswordViewModel { get; set; }
         public IndexViewModel IndexViewModel { get; set; }
         public profileimg Profileimg { get; set; }
+
+        public Favorite Favorite { get; set; }
+        public List<Favorite> Favorites { get; set; }
     }
 }

@@ -227,9 +227,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803210127366_initialm.cs" />
-    <Compile Include="Migrations\201803210127366_initialm.Designer.cs">
-      <DependentUpon>201803210127366_initialm.cs</DependentUpon>
+    <Compile Include="Migrations\201803210213362_fixerror.cs" />
+    <Compile Include="Migrations\201803210213362_fixerror.Designer.cs">
+      <DependentUpon>201803210213362_fixerror.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803211319581_Add-datetimeintablexp.cs" />
+    <Compile Include="Migrations\201803211319581_Add-datetimeintablexp.Designer.cs">
+      <DependentUpon>201803211319581_Add-datetimeintablexp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221324528_add-Table-Favorite.cs" />
+    <Compile Include="Migrations\201803221324528_add-Table-Favorite.Designer.cs">
+      <DependentUpon>201803221324528_add-Table-Favorite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.cs" />
+    <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.Designer.cs">
+      <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201803211457475_dateexp.cs" />
     <Compile Include="Migrations\201803211457475_dateexp.Designer.cs">
@@ -247,6 +259,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Conseil.cs" />
     <Compile Include="Models\Expiriment.cs" />
+    <Compile Include="Models\Favorite.cs" />
     <Compile Include="Models\Fillier.cs" />
     <Compile Include="Models\GoogleDriveFile.cs" />
     <Compile Include="Models\GoogleDriveFilesRepository.cs" />
@@ -281,6 +294,8 @@
     <Content Include="Content\icons\physique.png" />
     <Content Include="Content\icons\Registre.jpg" />
     <Content Include="Content\icons\science.png" />
+    <Content Include="Content\resume.css" />
+    <Content Include="Content\resume.min.css" />
     <Content Include="Content\Slick\ajax-loader.gif" />
     <Content Include="Content\Slick\fonts\slick.svg" />
     <Content Include="Content\Slick\slick-theme.css" />
@@ -295,7 +310,6 @@
     <Content Include="GoogleDriveFiles\Introduction.txt" />
     <Content Include="Images\GroupsImage\ANDROID.png" />
     <Content Include="Images\GroupsImage\aspnet.jpg" />
-    <Content Include="Images\GroupsImage\aspnet.png" />
     <Content Include="Images\GroupsImage\csharp-.png" />
     <Content Include="Images\GroupsImage\LearningCSharp.jpg" />
     <Content Include="Images\GroupsImage\logo_chash.png" />
@@ -429,6 +443,8 @@
     <Content Include="Views\Shared\_Loginmodal.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_RegistreModal.cshtml" />
+    <Content Include="Views\Expiriment\Index.cshtml" />
+    <Content Include="Views\Expiriment\GetExpiriment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -443,8 +459,17 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803210127366_initialm.resx">
-      <DependentUpon>201803210127366_initialm.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803210213362_fixerror.resx">
+      <DependentUpon>201803210213362_fixerror.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803211319581_Add-datetimeintablexp.resx">
+      <DependentUpon>201803211319581_Add-datetimeintablexp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221324528_add-Table-Favorite.resx">
+      <DependentUpon>201803221324528_add-Table-Favorite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221328156_add-Table-Favoritefix.resx">
+      <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803211457475_dateexp.resx">
       <DependentUpon>201803211457475_dateexp.cs</DependentUpon>
@@ -471,7 +496,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56449</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

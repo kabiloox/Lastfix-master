@@ -11,6 +11,7 @@ namespace Electronique_Labo.Models
         public int Id { get; set; }
         
         public string Titre { get; set; }
+        public DateTime DateTime { get; set; }
         public string Image { get; set; }
         public string But { get; set; }
         public string ResultatAttendue { get; set; }
