@@ -7,12 +7,10 @@ namespace Electronique_Labo.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Expiriments", "DateTime", c => c.DateTime(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Expiriments", "DateTime");
         }
     }
 }

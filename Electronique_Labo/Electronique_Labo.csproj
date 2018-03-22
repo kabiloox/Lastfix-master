@@ -235,14 +235,6 @@
     <Compile Include="Migrations\201803211319581_Add-datetimeintablexp.Designer.cs">
       <DependentUpon>201803211319581_Add-datetimeintablexp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803221324528_add-Table-Favorite.cs" />
-    <Compile Include="Migrations\201803221324528_add-Table-Favorite.Designer.cs">
-      <DependentUpon>201803221324528_add-Table-Favorite.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.cs" />
-    <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.Designer.cs">
-      <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201803211457475_dateexp.cs" />
     <Compile Include="Migrations\201803211457475_dateexp.Designer.cs">
       <DependentUpon>201803211457475_dateexp.cs</DependentUpon>
@@ -254,6 +246,14 @@
     <Compile Include="Migrations\201803212215275_fixn.cs" />
     <Compile Include="Migrations\201803212215275_fixn.Designer.cs">
       <DependentUpon>201803212215275_fixn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221324528_add-Table-Favorite.cs" />
+    <Compile Include="Migrations\201803221324528_add-Table-Favorite.Designer.cs">
+      <DependentUpon>201803221324528_add-Table-Favorite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.cs" />
+    <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.Designer.cs">
+      <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -310,6 +310,7 @@
     <Content Include="GoogleDriveFiles\Introduction.txt" />
     <Content Include="Images\GroupsImage\ANDROID.png" />
     <Content Include="Images\GroupsImage\aspnet.jpg" />
+    <Content Include="Images\GroupsImage\aspnet.png" />
     <Content Include="Images\GroupsImage\csharp-.png" />
     <Content Include="Images\GroupsImage\LearningCSharp.jpg" />
     <Content Include="Images\GroupsImage\logo_chash.png" />
@@ -319,6 +320,7 @@
     <Content Include="Images\ImageExpiriment\Capture.PNG" />
     <Content Include="Images\ImageExpiriment\csharp-.png" />
     <Content Include="profileimage\44297710_p0.jpg" />
+    <Content Include="profileimage\animation-flat-line-knowledge-and-creative-education-graphic-design-flat-creativity-school-and-stationary-sign-and-symbol-education-icon-with-isolated-background.png" />
     <Content Include="profileimage\character-doctor-scientist-professional-vector-12016062.jpg" />
     <Content Include="profileimage\chemical-laboratory-vector-1069112.jpg" />
     <Content Include="profileimage\dark_souls_bonfire_sword_character_relax_19815_1920x1080.jpg" />
@@ -443,8 +445,6 @@
     <Content Include="Views\Shared\_Loginmodal.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_RegistreModal.cshtml" />
-    <Content Include="Views\Expiriment\Index.cshtml" />
-    <Content Include="Views\Expiriment\GetExpiriment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -465,12 +465,6 @@
     <EmbeddedResource Include="Migrations\201803211319581_Add-datetimeintablexp.resx">
       <DependentUpon>201803211319581_Add-datetimeintablexp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221324528_add-Table-Favorite.resx">
-      <DependentUpon>201803221324528_add-Table-Favorite.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221328156_add-Table-Favoritefix.resx">
-      <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803211457475_dateexp.resx">
       <DependentUpon>201803211457475_dateexp.cs</DependentUpon>
     </EmbeddedResource>
@@ -479,6 +473,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803212215275_fixn.resx">
       <DependentUpon>201803212215275_fixn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221324528_add-Table-Favorite.resx">
+      <DependentUpon>201803221324528_add-Table-Favorite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221328156_add-Table-Favoritefix.resx">
+      <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -496,7 +496,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56449</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

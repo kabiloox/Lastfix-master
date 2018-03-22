@@ -16,7 +16,6 @@ namespace Electronique_Labo.Models
         public string But { get; set; }
         public string ResultatAttendue { get; set; }
         public string Notes { get; set; }
-        public DateTime DateTime { get; set; }
 
 
         //----------------ICollection---------------------------//
