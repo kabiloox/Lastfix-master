@@ -23,7 +23,8 @@ namespace Electronique_Labo
             var IdUser = User.Identity.GetUserId();
             var Vn = new ViewModel
             {
-                Expiriments = db.Expiriments.Where(s=>s.ApplicationUserId== IdUser).ToList()
+                Expiriments = db.Expiriments.Where(s=>s.ApplicationUserId== IdUser).ToList(),
+                Niveaus = db.Niveaus.ToList()
             };
             return View(Vn);
         }
@@ -156,6 +157,62 @@ namespace Electronique_Labo
             db.Expiriments.Remove(Expiriment);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult GetExpiriment(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var exp = db.Expiriments.Find(id);
+            if (exp == null)
+            {
+                return HttpNotFound();
+            }
+            var ImageUser = exp.ApplicationUserId;
+            var vm = new ViewModel();
+            vm.Niveaus = db.Niveaus.ToList();
+            vm.Filliers = db.Filliers.ToList();
+            vm.Secteur = db.Secteurs.Single(s=>s.Id== exp.SecteurId);
+            vm.Outils = db.Outils.Where(s => s.ExpirimentId == id).ToList();
+            vm.Conseils = db.Conseils.Where(s => s.ExpirimentId == id).ToList();
+            vm.Imageses = db.Imageses.Where(s => s.ExpirimentId == id).ToList();
+            vm.GoogleDriveFiles = db.GoogleDriveFiles.Where(s => s.ExpirimentId == id).ToList();
+            vm.Profileimg = db.Profileimgs.Single(s => s.ApplicationUserId == ImageUser);
+            vm.Expiriment = exp;
+            vm.Expiriment.SelectedArrayFilliere = exp.IdFilliere.Split(',').ToArray();
+
+            return View(vm);
+        }
+        public ActionResult MyExpSearch(int? id,string title)
+        {
+            var IdUser = User.Identity.GetUserId();
+            //listerecherche.Where(s => s.Nom_Produit.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+            var Vn = new ViewModel();
+            if (title == null)
+            {
+                Vn.Expiriments = db.Expiriments.Where(s => s.ApplicationUserId == IdUser).ToList()
+                    .Where(s => s.NiveauId == id).ToList();
+            }
+            else
+            {
+                if (id == null)
+                {
+                    Vn.Expiriments = db.Expiriments.Where(s => s.ApplicationUserId == IdUser).ToList()
+                        .Where(s => s.Titre.IndexOf(title, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                }
+                else
+                {
+                    Vn.Expiriments = db.Expiriments.Where(s => s.ApplicationUserId == IdUser).ToList()
+                        .Where(s => s.NiveauId == id).ToList()
+                        .Where(s => s.Titre.IndexOf(title, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+
+
+                }
+            }
+            Vn.Niveaus = db.Niveaus.ToList();
+            return View("Index",Vn);
         }
     }
 }

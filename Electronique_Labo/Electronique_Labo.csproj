@@ -271,6 +271,8 @@
     <Content Include="Content\icons\physique.png" />
     <Content Include="Content\icons\Registre.jpg" />
     <Content Include="Content\icons\science.png" />
+    <Content Include="Content\resume.css" />
+    <Content Include="Content\resume.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -280,7 +282,6 @@
     <Content Include="GoogleDriveFiles\Introduction.txt" />
     <Content Include="Images\GroupsImage\ANDROID.png" />
     <Content Include="Images\GroupsImage\aspnet.jpg" />
-    <Content Include="Images\GroupsImage\aspnet.png" />
     <Content Include="Images\GroupsImage\csharp-.png" />
     <Content Include="Images\GroupsImage\LearningCSharp.jpg" />
     <Content Include="Images\GroupsImage\logo_chash.png" />
@@ -399,6 +400,7 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_RegistreModal.cshtml" />
     <Content Include="Views\Expiriment\Index.cshtml" />
+    <Content Include="Views\Expiriment\GetExpiriment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
