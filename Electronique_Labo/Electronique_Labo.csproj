@@ -235,10 +235,19 @@
     <Compile Include="Migrations\201803211319581_Add-datetimeintablexp.Designer.cs">
       <DependentUpon>201803211319581_Add-datetimeintablexp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803221324528_add-Table-Favorite.cs" />
+    <Compile Include="Migrations\201803221324528_add-Table-Favorite.Designer.cs">
+      <DependentUpon>201803221324528_add-Table-Favorite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.cs" />
+    <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.Designer.cs">
+      <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Conseil.cs" />
     <Compile Include="Models\Expiriment.cs" />
+    <Compile Include="Models\Favorite.cs" />
     <Compile Include="Models\Fillier.cs" />
     <Compile Include="Models\GoogleDriveFile.cs" />
     <Compile Include="Models\GoogleDriveFilesRepository.cs" />
@@ -420,6 +429,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803211319581_Add-datetimeintablexp.resx">
       <DependentUpon>201803211319581_Add-datetimeintablexp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221324528_add-Table-Favorite.resx">
+      <DependentUpon>201803221324528_add-Table-Favorite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221328156_add-Table-Favoritefix.resx">
+      <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

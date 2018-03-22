@@ -214,5 +214,42 @@ namespace Electronique_Labo
             Vn.Niveaus = db.Niveaus.ToList();
             return View("Index",Vn);
         }
+        //Favorite Controller
+        [HttpPost]
+        public ActionResult Addtofavorite(int id)
+        {
+
+            var userId = User.Identity.GetUserId();
+            var medcinId = id;
+            var check = db.Favorites.Where(a => a.ExpirimentId == id && a.ApplicationUserId == userId).ToList();
+            if (check.Count < 1)
+            {
+                var favorie = new Favorite();
+                favorie.ExpirimentId = id;
+                favorie.ApplicationUserId = userId;
+                db.Favorites.Add(favorie);
+                db.SaveChanges();
+                TempData["Validation"] = "Expiriment Ajouter dans favorite ";
+
+            }
+            else
+            {
+                TempData["Validation"] = "Expiriment existe D'éja dans favorite";
+
+
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult FavoriteIndex()
+        {
+            var IdUser = User.Identity.GetUserId();
+            var Vn = new ViewModel
+            {
+                Favorites = db.Favorites.Where(s => s.ApplicationUserId == IdUser).ToList()
+            };
+            return View(Vn);
+        }
     }
 }

@@ -84,10 +84,35 @@
                     <div class="row mt-2">
                     @foreach (var v in Model.Imageses)
                     {
+                        var myModal = "myModal" + v.Id;
                         <div class="card mr-2 mb-2" style="width: 18rem;">
                             <img class="card-img-top" src="~/Images/GroupsImage/@v.Image" style="height: 180px; width: 100%; display: block;" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">@v.Titre</p>
+                            </div>
+                            <div class="card-footer">
+                         
+                                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#@myModal"
+                                            data-whatever="@v.Id">
+                                        Aficher
+                                    </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Image</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="~/Images/GroupsImage/@v.Image" class="img-fluid" alt="Responsive image">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     }
@@ -98,7 +123,11 @@
         </div>
         <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
+                @if (Model.GoogleDriveFiles.Count > 0)
+                {
                 <h3 class="mb-0">Fichier Pour Telecharger </h3>
+                }
+                
                 <ul>
                     <div class="row mt-2">
                         @foreach (var v in Model.GoogleDriveFiles)
@@ -107,14 +136,14 @@
                                 <div class="card-header">@v.Name</div>
                                 <div class="card-body">
                                     <h4 class="card-title text-dark">@v.TiTle</h4>
-                                   
+
                                 </div>
                                 <div class="card-footer">
                                     <a href="https://drive.google.com/file/d/@v.FileId/view" class="btn btn-primary" target="_blanck">Telecharger</a>
                                 </div>
-                                </div>
+                            </div>
                         }
-                     
+
                     </div>
                 </ul>
             </div>
