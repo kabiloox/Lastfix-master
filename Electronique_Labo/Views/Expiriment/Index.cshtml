@@ -1,37 +1,40 @@
 ﻿@model Electronique_Labo.Models.ViewModel
 
 </div>
-<div class="jumbotron  text-white rounded " style="background: #383c40">
-    <div class="col-md-10 px-0">
-        <h1 class="display-4 font-italic">Mes Expiriment</h1>
-    </div>
-    <div class="card" style="margin-bottom: -80px;">
+<div class="  text-primary rounded " >
+   
+    <div class="card" style="margin-bottom: -20px;">
         <div class="card-body">
+            <div class="card-title">
+                <div class="col-md-10 px-0">
+                    <h1 class="display-4 font-italic">Mes Expiriment</h1>
+                </div>
+            </div>
             <div class="row clearfix">
                 <!-- Store Search -->
                 <div class="col-lg-6 col-md-12 ">
 
                     <div class=" d-flex">
-                        @Html.DropDownList("id", new SelectList(Model.Niveaus, "Id", "Nom"), "Niveau", new { @class = "form-control col",@id="NiveuId" });
+                        @Html.DropDownList("id", new SelectList(Model.Niveaus, "Id", "Nom"), "Niveau", new { @class = "form-control col",@id="NiveuId" })
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 float-right">
                     <div class=" d-flex">
                         @Html.TextBox("title",null,"",new{@class="form-control col",@id= "Titletext",placeholder="Par titre" })
                         <!-- Search Button -->
-                        <button class="btn btn-dark " onclick="getNiveau()">SEARCH</button>
+                        <button class="btn btn-outline-warning " onclick="getNiveau()">Chercher</button>
 
                     </div>
                 </div>
                 <div class="col-lg-12 float-right mt-1">
-                    <button class="btn btn-primary float-right col-md-2 " onclick="refrech()">Actualise</button>
+                    <button class="btn btn-outline-primary float-right col-md-2 " onclick="refrech()">afficher tout</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class=" jumbotron bg-dark mt-5" >
+<div class=" jumbotron  mt-5" >
     @*album py-5 bg-light*@
     <div class="container">
 
@@ -39,52 +42,56 @@
 
             @foreach (var listExpiriment in Model.Expiriments)
             {
-                <div class="col-md-4">
-                    <div class="card mb-4 box-sizing">
-                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@listExpiriment.Image" data-holder-rendered="true">
-                        <div class="card-body">
-                            <h5 class="card-title">@listExpiriment.Titre</h5>
-                            <p class="card-text">@listExpiriment.But</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    @Html.ActionLink("Modifier", "Edit", new { id = listExpiriment.Id }, new { @class = "btn btn-sm btn-success" })
-                                    @using (Html.BeginForm("Delete", "Expiriment", new { listExpiriment.Id }))
+            <div class="col-md-4">
+                <span class="badge badge-warning"> @Html.ActionLink("Afficher", "GetExpiriment", "Expiriment", new { id = listExpiriment.Id }, new { @class = "" })</span>
+               
 
-                                    {
-                                        var myModal = "myModal" + listExpiriment.Id;
-                                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#@myModal"
-                                                data-whatever="@listExpiriment.Id">
-                                            Supprimer
+                <div class="card mb-4 box-sizing">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@listExpiriment.Image" data-holder-rendered="true">
+                    <div class="card-body">
+                        <h5 class="card-title">@listExpiriment.Titre</h5>
+                        <p class="card-text">@listExpiriment.But</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                @Html.ActionLink("Modifier", "Edit", new { id = listExpiriment.Id }, new { @class = "btn btn-sm btn-success" })
+                                @using (Html.BeginForm("Delete", "Expiriment", new { listExpiriment.Id }))
+
+                    {
+                        var myModal = "myModal" + listExpiriment.Id;
+                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#@myModal"
+                                data-whatever="@listExpiriment.Id">
+                            Supprimer
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Supprimer Expiriment</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Supprimer Expiriment</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Voulez-Vous vraiment Supprimer: <span><b>@listExpiriment.Titre</b></span>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-
+                                    </div>
+                                    <div class="modal-body">
+                                        Voulez-Vous vraiment Supprimer: <span><b>@listExpiriment.Titre</b></span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                    </div>
                                 </div>
-                                <strong class="text-muted">@listExpiriment.DateTime.ToShortDateString()</strong>
                             </div>
                         </div>
+        }
+
+                            </div>
+                            <strong class="text-muted">@listExpiriment.DateTime.ToShortDateString()</strong>
+                        </div>
+
                     </div>
                 </div>
+            </div>
             }
 
 
@@ -123,7 +130,7 @@
 </script>
 <style>
     body {
-        padding-top: 5px;
+        padding-top: 0;
     }
 
     .body-content {

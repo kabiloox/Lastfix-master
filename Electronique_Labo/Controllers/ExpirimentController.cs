@@ -178,6 +178,8 @@ namespace Electronique_Labo
             var vm = new ViewModel();
             vm.Niveaus = db.Niveaus.ToList();
             vm.Filliers = db.Filliers.ToList();
+           
+            vm.Niveau = db.Niveaus.Single(s => s.Id == exp.NiveauId);
             vm.Secteur = db.Secteurs.Single(s=>s.Id== exp.SecteurId);
             vm.Outils = db.Outils.Where(s => s.ExpirimentId == id).ToList();
             vm.Conseils = db.Conseils.Where(s => s.ExpirimentId == id).ToList();
@@ -218,13 +220,24 @@ namespace Electronique_Labo
             Vn.Niveaus = db.Niveaus.ToList();
             return View("Index",Vn);
         }
+        //*gsfsgfgdfgdfgdfgdfg*/
+        public ActionResult toutsearch( string title)
+        {
+           
+            var vm = new ViewModel()
+            {
+                 Expiriments = db.Expiriments.Where(s => s.Titre.Contains(title)).ToList()
+
+        };
+            return View( vm);
+        }
         //Favorite Controller
-      
+
         public ActionResult Addtofavorite(int id)
         {
 
             var userId = User.Identity.GetUserId();
-            var medcinId = id;
+            
             var check = db.Favorites.Where(a => a.ExpirimentId == id && a.ApplicationUserId == userId).ToList();
             if (check.Count < 1)
             {
@@ -252,8 +265,22 @@ namespace Electronique_Labo
             var Vn = new ViewModel
             {
                 Favorites = db.Favorites.Where(s => s.ApplicationUserId == IdUser).ToList()
+
             };
             return View(Vn);
+        }
+        public ActionResult supp(int? id)
+        {
+
+            var fav = db.Favorites.Find(id);
+            if (fav != null)
+            {
+                db.Favorites.Remove(fav);
+                db.SaveChanges();
+            }
+            return RedirectToAction("FavoriteIndex");
+
+
         }
     }
 }

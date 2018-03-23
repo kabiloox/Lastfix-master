@@ -16,6 +16,7 @@
         string id = User.Identity.GetUserId();
 
         var find = db.Profileimgs.SingleOrDefault(c => c.ApplicationUserId == id);
+      
         if (find != null)
         {
             var lmaoImage = find.image;
@@ -27,7 +28,7 @@
         else
         {
             <li>
-                <div> <img width="50" height="50" data-toggle="popover" class="rounded-circle" src="~/profileimage/character-doctor-scientist-professional-vector-12016062.jpg" /></div>
+                <div> <img width="50" height="50" data-toggle="popover"  class="rounded-circle" src="~/profileimage/character-doctor-scientist-professional-vector-12016062.jpg" /></div>
             </li>
 
         }
@@ -59,11 +60,11 @@ else
     $(document).ready(function() {
         $('[data-toggle="popover"]').popover({
             placement: 'bottom',
-          title: 'Parametre de Compte',
+            title:'Parametre de compte',
             trigger : 'click',
             html : true,
             content:
- '<div ><hr color="#F2771C"><div style="margin-top:10px"><button style="width:200px;background-color: #C13BF9;color: azure" type="button" class="btn " data-toggle="modal" data-target="#modalimg">Changer Photo</button></div><hr color="#F2771C">  ' +
+ '<div ><div style="margin-top:20px">@Html.ActionLink("Ajouter une expiriment", "create", "Expiriment", routeValues: null, htmlAttributes: new {  @class = "btn btn-primary",style= "width:200px" })</div><hr color="#F2771C"><div style="margin-top:10px"><button style="width:200px;background-color: #C13BF9;color: azure" type="button" class="btn " data-toggle="modal" data-target="#modalimg">Changer Photo</button></div><hr color="#F2771C">  ' +
      '<div><button style="width:200px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#modalmdp">Changer Mdp</button></div><hr color="#F2771C"><div style="margin-top:20px">@Html.ActionLink("Se Deconnecter", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "logoutForm", @class = "btn btn-danger",style= "width:200px" })</div> </div>',
             delay: { "show": 200, "hide": 100 }
         });

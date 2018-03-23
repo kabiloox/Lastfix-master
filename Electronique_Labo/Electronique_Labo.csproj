@@ -255,6 +255,10 @@
     <Compile Include="Migrations\201803221328156_add-Table-Favoritefix.Designer.cs">
       <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803231230110_favoris.cs" />
+    <Compile Include="Migrations\201803231230110_favoris.Designer.cs">
+      <DependentUpon>201803231230110_favoris.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Conseil.cs" />
@@ -315,6 +319,12 @@
     <Content Include="Images\GroupsImage\LearningCSharp.jpg" />
     <Content Include="Images\GroupsImage\logo_chash.png" />
     <Content Include="Images\GroupsImage\programming2.jpg" />
+    <Content Include="Images\ImageExpiriment\aspnet.png" />
+    <Content Include="Images\ImageExpiriment\chemical-laboratory-vector-1069112.jpg" />
+    <Content Include="Images\ImageExpiriment\FB_IMG_1431802268288.jpg" />
+    <Content Include="Images\ImageExpiriment\if_refresh_134221.png" />
+    <Content Include="Images\ImageExpiriment\photoUM80123D.jpg" />
+    <Content Include="Images\ImageExpiriment\science.png" />
     <Content Include="profileimage\44297710_p0.jpg" />
     <Content Include="profileimage\animation-flat-line-knowledge-and-creative-education-graphic-design-flat-creativity-school-and-stationary-sign-and-symbol-education-icon-with-isolated-background.png" />
     <Content Include="profileimage\character-doctor-scientist-professional-vector-12016062.jpg" />
@@ -443,10 +453,15 @@
     <Content Include="Views\Shared\_RegistreModal.cshtml" />
     <Content Include="Views\Expiriment\GetExpiriment.cshtml" />
     <Content Include="Views\Expiriment\Index.cshtml" />
+    <Content Include="Views\Expiriment\FavoriteIndex.cshtml" />
+    <Content Include="Views\Expiriment\toutsearch.cshtml" />
+    <Content Include="Views\Shared\_Chimie.cshtml" />
+    <Content Include="Views\Home\chimie.cshtml" />
+    <Content Include="Views\Home\Science.cshtml" />
+    <Content Include="Views\Home\Physic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\ImageExpiriment\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -478,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803221328156_add-Table-Favoritefix.resx">
       <DependentUpon>201803221328156_add-Table-Favoritefix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803231230110_favoris.resx">
+      <DependentUpon>201803231230110_favoris.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,7 +18,33 @@ namespace Electronique_Labo.Controllers
             };
             return View(vm);
         }
-
+        //dffdfdsfdsfs
+        public ActionResult chimie()
+        {
+            var vm = new ViewModel()
+            {
+                Expiriments = db.Expiriments.ToList()
+            };
+            return View("chimie",vm);
+        }
+        //dffdfdsfdsfs
+        public ActionResult science()
+        {
+            var vm = new ViewModel()
+            {
+                Expiriments = db.Expiriments.ToList()
+            };
+            return View("Science",vm);
+        }
+        //dffdfdsfdsfs
+        public ActionResult physic()
+        {
+            var vm = new ViewModel()
+            {
+                Expiriments = db.Expiriments.ToList()
+            };
+            return View("physic",vm);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -32,5 +58,6 @@ namespace Electronique_Labo.Controllers
 
             return View();
         }
+        
     }
 }

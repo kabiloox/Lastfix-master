@@ -1,0 +1,89 @@
+﻿
+@model Electronique_Labo.Models.ViewModel
+
+</div>
+
+
+<div class=" jumbotron  mt-5">
+    @*album py-5 bg-light*@
+    <div class="container">
+        <fieldset style="text-align: center">
+            <legend class="border-bottom border-primary"><b class="text-primary"> Mes Favoris</b></legend>
+        </fieldset>
+        <div class="row">
+
+            @foreach (var listExpiriment in Model.Favorites)
+            {
+                <div class="col-md-4">
+                    <span class="badge badge-warning"> @Html.ActionLink("Afficher", "GetExpiriment", "Expiriment", new { id = listExpiriment.Expiriment.Id }, new { @class = "" })</span>
+
+
+                    <div class="card mb-4 box-sizing">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@listExpiriment.Expiriment.Image" data-holder-rendered="true">
+                        <div class="card-body">
+                            <h5 class="card-title">@listExpiriment.Expiriment.Titre</h5>
+                            <p class="card-text">@listExpiriment.Expiriment.But</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                   
+                                    @using (Html.BeginForm("supp", "Expiriment", new { listExpiriment.Id }))
+
+                                    {
+                                        var myModal = "myModal" + listExpiriment.Id;
+                                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#@myModal"
+                                                data-whatever="@listExpiriment.ExpirimentId">
+                                            - Favorites
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Supprimer de mes favoris</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Voulez-Vous vraiment Supprimer: <span><b>@listExpiriment.Expiriment.Titre</b></span>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                        <button type="submit" class="btn btn-danger">Retirer De mes favoris</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                                <strong class="text-muted">@listExpiriment.Expiriment.DateTime.ToShortDateString()</strong>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        padding-top: 0;
+    }
+
+    .body-content {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .advance-search {
+        background: #222;
+        padding: 40px 30px;
+    }
+</style>
+

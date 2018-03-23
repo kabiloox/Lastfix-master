@@ -10,7 +10,7 @@ namespace Electronique_Labo.Models
         public int Id { get; set; }
         public int ExpirimentId { get; set; }
 
-        public Expiriment Expiriments { get; set; }
+        public virtual Expiriment Expiriment { get; set; }
         public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }

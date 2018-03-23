@@ -1,124 +1,128 @@
 @model Electronique_Labo.Models.ViewModel
 ﻿</div>
-<body style="max-width: 100%; padding-top: 0;">
-<div >
-    
+<body style="max-width: 100%; padding-top:0;">
+    <div style="margin-top:-25px">
+
         @if (Request.IsAuthenticated)
         {
             <div class="card " style="width: 100%; height: 600px;margin-bottom: 70px">
-                <h3 class="card-header text-primary text-center"><b> en rejoignant elabo, vous obtiendrez l'expérience de personnalisation complète</b></h3>     
+                <h3 class="card-header text-primary text-center"><b> en rejoignant elabo, vous obtiendrez l'experience de personnalisation complete</b></h3>
                 <img style="height: 100%; width: 100%; display: block;"
                      src="~/profileimage/animation-flat-line-knowledge-and-creative-education-graphic-design-flat-creativity-school-and-stationary-sign-and-symbol-education-icon-with-isolated-background.png" alt="Card image">
-                </div>
+            </div>
 
         }
         else
         {<div class="card " style="width: 100%; height: 600px;margin-bottom: 130px">
-             <h3 class="card-header text-primary text-center"><b> en rejoignant elabo, vous obtiendrez l'expérience de personnalisation complète</b></h3>     
-             <img style="height: 100%; width: 100%; display: block;"
-                  src="~/profileimage/animation-flat-line-knowledge-and-creative-education-graphic-design-flat-creativity-school-and-stationary-sign-and-symbol-education-icon-with-isolated-background.png" alt="Card image">
-             <div class="card-footer" >
-                 <p class="card-text">
-                 <p class="text-lg-center font-weight-bold" style="margin-top: 10px;">Vous n'avez pas de compte? <a onclick="fnt()" class="text-info " id="test1" href="#"><b>inscrire vous</b></a></p>
-             </div></div>
+                <h3 class="card-header text-primary text-center"><b> en rejoignant elabo, vous obtiendrez l'experience de personnalisation complete</b></h3>
+                <img style="height: 100%; width: 100%; display: block;"
+                     src="~/profileimage/animation-flat-line-knowledge-and-creative-education-graphic-design-flat-creativity-school-and-stationary-sign-and-symbol-education-icon-with-isolated-background.png" alt="Card image">
+                <div class="card-footer">
+                    <p class="card-text">
+                        <h5> <p class="text-lg-center font-weight-bold">Vous n'avez pas de compte? <a onclick="fnt()" class="text-info " id="test1" href="#"><b>inscrire vous</b></a></p></h5>
+                </div>
+            </div>
         }
 
 
     </div>
-<fieldset style="text-align: center">
-    <legend class="border-bottom border-dark" ><b > Science Expirimental</b></legend>
-</fieldset>
-<div class="slide  " style="margin-left: 235px;margin-right: 235px">
-    @foreach (var v in Model.Expiriments)
-    {
-        if (v.SecteurId == 1)
+    <fieldset style="text-align: center">
+        <legend class="border-bottom border-primary"><b class="text-primary"> Science Expirimental</b></legend>
+    </fieldset>
+    <div class="slide  " style="margin-left: 235px;margin-right: 235px">
+        @foreach (var v in Model.Expiriments)
         {
+            if (v.SecteurId == 1)
+            {
 
-            <div>
-                <div class="card mr-lg-5 ml-5 ">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" 
-                         style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@v.Image"  data-holder-rendered="true">
-                    <div class="card-body">
-                        <h3>@v.Titre</h3>
-                        <p class="card-text">@v.But</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                @Html.ActionLink("Afficher", "GetExpiriment", "Expiriment", new { id = v.Id }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Favorite", "Addtofavorite", "Expiriment", new { id = v.Id }, new { @class = "btn btn-warning" })
+                <div>
+                    <div class="card mr-lg-5 ml-5 ">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
+                             style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@v.Image" data-holder-rendered="true">
+                        <div class="card-body">
+                            <h3>@v.Titre</h3>
+                            <p class="card-text">@v.DateTime</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @Html.ActionLink("Afficher", "GetExpiriment", "Expiriment", new { id = v.Id }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink(" + Favorite", "Addtofavorite", "Expiriment", new { id = v.Id }, new { @class = "btn btn-warning  " })
+                                </div>
+                                <small class="text-muted">@v.DateTime</small>
                             </div>
-                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
-    }
-</div>
-<fieldset style="text-align: center">
-    <legend class="border-bottom border-dark"><b> Chimie</b></legend>
-</fieldset>
-<div class="slide  " style="margin-left: 235px;margin-right: 235px">
-    @foreach (var v in Model.Expiriments)
-    {
-        if (v.SecteurId == 2)
+    </div>
+    <fieldset style="text-align: center">
+        <legend class="border-bottom border-warning"><b class="text-warning"> Chimie</b></legend>
+    </fieldset>
+    <div class="slide  " style="margin-left: 235px;margin-right: 235px">
+        @foreach (var v in Model.Expiriments)
         {
+            if (v.SecteurId == 2)
+            {
 
-            <div>
-                <div class="card mr-lg-5 ml-5 ">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
-                         style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@v.Image" data-holder-rendered="true">
-                    <div class="card-body">
-                        <h3>@v.Titre</h3>
-                        <p class="card-text">@v.But</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                              @Html.ActionLink("Afficher","GetExpiriment","Expiriment",new{id=v.Id},new{@class="btn btn-primary"})
-                                @Html.ActionLink("Favorite", "Addtofavorite", "Expiriment",new{id=v.Id},new{@class="btn btn-warning"})
+                <div>
+                    <div class="card mr-lg-5 ml-5 ">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
+                             style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@v.Image" data-holder-rendered="true">
+                        <div class="card-body">
+                            <h3>@v.Titre</h3>
+                            <p class="card-text">@v.But</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @Html.ActionLink("Afficher", "GetExpiriment", "Expiriment", new { id = v.Id }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Favorite", "Addtofavorite", "Expiriment", new { id = v.Id }, new { @class = "btn btn-warning" })
+                                </div>
+                                <small class="text-muted">@v.DateTime</small>
                             </div>
-                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
-    }
-</div>
-<fieldset style="text-align: center">
-    <legend class="border-bottom border-dark"><b> physique</b></legend>
-</fieldset>
-<div class="slide  " style="margin-left: 235px;margin-right: 235px">
-    @foreach (var v in Model.Expiriments)
-    {
-        if (v.SecteurId == 3)
+    </div>
+    <fieldset style="text-align: center">
+        <legend class="border-bottom  border-success"><b class="text-success"> physique</b></legend>
+    </fieldset>
+    <div class="slide  " style="margin-left: 235px;margin-right: 235px">
+        @foreach (var v in Model.Expiriments)
         {
+            if (v.SecteurId == 3)
+            {
 
-            <div>
-                <div class="card mr-lg-5 ml-5 ">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" 
-                         style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@v.Image"  data-holder-rendered="true">
-                    <div class="card-body">
-                        <h3>@v.Titre</h3>
-                        <p class="card-text">@v.But</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                @Html.ActionLink("Afficher", "GetExpiriment", "Expiriment", new { id = v.Id }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Favorite", "Addtofavorite", "Expiriment", new { id = v.Id }, new { @class = "btn btn-warning" })
+                <div>
+                    <div class="card mr-lg-5 ml-5 ">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
+                             style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@v.Image" data-holder-rendered="true">
+                        <div class="card-body">
+                            <h3>@v.Titre</h3>
+                            <p class="card-text">@v.But</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @Html.ActionLink("Afficher", "GetExpiriment", "Expiriment", new { id = v.Id }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Favorite", "Addtofavorite", "Expiriment", new { id = v.Id }, new { @class = "btn btn-warning" })
+                                </div>
+                                <small class="text-muted">@v.DateTime</small>
                             </div>
-                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
-    }
-</div>
+    </div>
+</body>
 
 
     <script>
         $(function () {
             $('.slide').slick({
                 slidesToShow: 3,
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                autoplay: true,
+
 
             });
         });

@@ -1,0 +1,57 @@
+﻿@model Electronique_Labo.Models.ViewModel 
+
+</div>
+<div class="  text-primary rounded ">
+
+</div>
+
+<div class=" jumbotron  mt-5">
+    @*album py-5 bg-light*@
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var listExpiriment in Model.Expiriments)
+            {
+                <div class="col-md-4">
+                    
+
+
+                    <div class="card mb-4 box-sizing">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="~/Images/ImageExpiriment/@listExpiriment.Image" data-holder-rendered="true">
+                        <div class="card-body">
+                            <h5 class="card-title">@listExpiriment.Titre</h5>
+                            <p class="card-text">@listExpiriment.But</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @Html.ActionLink("Afficher", "GetExpiriment", "Expiriment", new { id = listExpiriment.Id }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink(" + Favorite", "Addtofavorite", "Expiriment", new { id = listExpiriment.Id }, new { @class = "btn btn-warning  " })
+                                </div>
+                                <strong class="text-muted">@listExpiriment.DateTime.ToShortDateString()</strong>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        padding-top: 0;
+    }
+
+    .body-content {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .advance-search {
+        background: #222;
+        padding: 40px 30px;
+    }
+</style>
